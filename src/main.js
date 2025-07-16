@@ -43,7 +43,8 @@ function calculateBonusByProfit(index, total, seller) {
  * @param options
  * @returns {{revenue, top_products, bonus, name, sales_count, profit, seller_id}[]}
  */
-function analyzeSalesData(data, options) { 
+function analyzeSalesData(data, options) {  
+    const { calculateRevenue, calculateBonus } = options;
     
     // @TODO: Проверка входных данных
     if (!data
@@ -60,9 +61,10 @@ function analyzeSalesData(data, options) {
         ) {
             throw new Error('Некорректные входные данные');
         }
+    
    
     // @TODO: Проверка наличия опций
-    const { calculateRevenue, calculateBonus } = options;
+    
     // @TODO: Подготовка промежуточных данных для сбора статистики
     const sellerStats = data.sellers.map(seller => ({
         // Заполним начальными данными
